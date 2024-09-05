@@ -1,0 +1,157 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #f3e7e9, #a1c4fd, #c2e9fb, #cfd9df, #e2ebf0);
+    background-size: 400% 400%;
+    animation: gradientBackground 15s ease infinite;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gift-container {
+    text-align: center;
+    z-index: 10;
+}
+
+.gift-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.3s;
+}
+
+.gift-box:hover {
+    transform: scale(1.1);
+}
+
+.lid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 60px;
+    background-color: #f4a261;
+    border-bottom: 4px solid #e76f51;
+    transform-origin: bottom;
+    transition: transform 0.5s ease-out;
+    z-index: 2;
+    transform: rotateX(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lid-ribbon-vertical,
+.lid-ribbon-horizontal {
+    position: absolute;
+    background-color: #e76f51;
+}
+
+.lid-ribbon-vertical {
+    width: 10px;
+    height: 60px;
+}
+
+.lid-ribbon-horizontal {
+    width: 150px;
+    height: 10px;
+    top: 25px;
+}
+
+.box {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 100px;
+    background-color: #f4a261;
+    border-top: 4px solid #e76f51;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.ribbon-vertical,
+.ribbon-horizontal {
+    position: absolute;
+    background-color: #e76f51;
+}
+
+.ribbon-vertical {
+    width: 20px;
+    height: 100px;
+    left: 65px;
+}
+
+.ribbon-horizontal {
+    width: 150px;
+    height: 20px;
+    top: 40px;
+}
+
+.message {
+    margin-top: 200px;
+    font-size: 2.5rem;
+    font-family: 'Arial', sans-serif;
+    color: #c0c0c0; /* Silver-like color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+    text-transform: uppercase; /* Makes the text look more stylish */
+    font-weight: bold;
+    letter-spacing: 2px;
+    position: relative;
+    animation: shine 2s ease-in-out infinite; /* Add a shine effect animation */
+}
+
+/* Keyframes for a shine effect */
+@keyframes shine {
+    0% {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7) 50%, transparent);
+        background-size: 200% 100%;
+        background-position: -100%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}
+
+
+.birthday-video {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 500px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--confetti-color);
+    top: -10px;
+    opacity: 0;
+    animation: confetti-fall 3s linear infinite;
+    animation-delay: var(--confetti-delay);
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotateZ(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+    }
+}
